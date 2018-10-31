@@ -1,6 +1,12 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Restaurants = sequelize.define('Restaurants', {
+    id: {
+      allowNull: false,
+      primaryKey: true,
+      type: DataTypes.UUID,
+      defaultValue:DataTypes.UUIDV4 
+    },
     name: DataTypes.STRING,
     category: {type: DataTypes.ENUM, values:["chinese", "mexican", "italian", "fastfood"]},
     pictures: DataTypes.ARRAY(DataTypes.STRING),

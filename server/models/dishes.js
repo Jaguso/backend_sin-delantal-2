@@ -1,6 +1,12 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Dishes = sequelize.define('Dishes', {
+    id: {
+      allowNull: false,
+      primaryKey: true,
+      type: DataTypes.UUID,
+      defaultValue:DataTypes.UUIDV4 
+    },
     name: DataTypes.STRING,
     price: DataTypes.DECIMAL(10,2),
     description: DataTypes.TEXT,

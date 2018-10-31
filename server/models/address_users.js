@@ -1,6 +1,12 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Address_Users = sequelize.define('Address_Users', {
+    id: {
+      allowNull: false,
+      primaryKey: true,
+      type: DataTypes.UUID,
+      defaultValue:DataTypes.UUIDV4 
+    },
     country: DataTypes.STRING,
     city: DataTypes.STRING,
     street: DataTypes.STRING,
