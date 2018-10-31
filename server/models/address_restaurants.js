@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Address_Restaurants = sequelize.define('Address_Restaurants', {
+  var Address_Restaurants = sequelize.define('Address_Restaurants', {
     country: DataTypes.STRING,
     city: DataTypes.STRING,
     street: DataTypes.STRING,
@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     zipcode: DataTypes.STRING
   }, {});
   Address_Restaurants.associate = function(models) {
-    // associations can be defined here
+    Address_Restaurants.belongsTo(models.Restaurants)
   };
   return Address_Restaurants;
 };

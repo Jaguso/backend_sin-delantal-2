@@ -4,18 +4,19 @@ module.exports = {
     return queryInterface.createTable('Restaurants', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID,
+        defaultValue:Sequelize.UUIDV4 
       },
       name: {
         type: Sequelize.STRING
       },
       category: {
-        type: Sequelize.ENUM
+        type: Sequelize.ENUM,
+        values: ["chinese", "mexican", "italian", "fastfood"]
       },
       pictures: {
-        type: Sequelize.ARRAY
+        type: Sequelize.ARRAY(Sequelize.STRING)
       },
       opens: {
         type: Sequelize.STRING

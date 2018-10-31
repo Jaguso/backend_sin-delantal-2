@@ -4,12 +4,13 @@ module.exports = {
     return queryInterface.createTable('Comments', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID,
+        defaultValue:Sequelize.UUIDV4 
       },
       rating: {
-        type: Sequelize.ENUM
+        type: Sequelize.ENUM,
+        values: ["1", "2", "3", "4", "5"]
       },
       comment: {
         type: Sequelize.TEXT

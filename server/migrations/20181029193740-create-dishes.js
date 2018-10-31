@@ -4,21 +4,21 @@ module.exports = {
     return queryInterface.createTable('Dishes', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID,
+        defaultValue:Sequelize.UUIDV4 
       },
       name: {
         type: Sequelize.STRING
       },
       price: {
-        type: Sequelize.DECIMAL
+        type: Sequelize.DECIMAL(10,2)
       },
       description: {
         type: Sequelize.TEXT
       },
       pictures: {
-        type: Sequelize.ARRAY
+        type: Sequelize.ARRAY(Sequelize.STRING)
       },
       createdAt: {
         allowNull: false,

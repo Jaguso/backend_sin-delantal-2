@@ -1,14 +1,17 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Restaurants = sequelize.define('Restaurants', {
+  var Restaurants = sequelize.define('Restaurants', {
     name: DataTypes.STRING,
-    category: DataTypes.ENUM,
-    pictures: DataTypes.ARRAY,
+    category: {type: DataTypes.ENUM, values:["chinese", "mexican", "italian", "fastfood"]},
+    pictures: DataTypes.ARRAY(DataTypes.STRING),
     opens: DataTypes.STRING,
     closes: DataTypes.STRING
   }, {});
   Restaurants.associate = function(models) {
-    // associations can be defined here
+    Restaurants.belongsTo(models.Users)
+    Restaurants.hasOne(models.Address_Restaurants)
+    Restaurants.hasMany(models.Dishes)
+    Restaurants.belongsTo(models.Reservations)
   };
   return Restaurants;
 };

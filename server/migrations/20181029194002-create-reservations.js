@@ -4,15 +4,16 @@ module.exports = {
     return queryInterface.createTable('Reservations', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID,
+        defaultValue:Sequelize.UUIDV4 
       },
       total: {
-        type: Sequelize.DECIMAL
+        type: Sequelize.DECIMAL(10,2)
       },
       status: {
-        type: Sequelize.ENUM
+        type: Sequelize.ENUM,
+        values: ["inCart", "payed", "cancelled"]
       },
       paypal: {
         type: Sequelize.STRING
